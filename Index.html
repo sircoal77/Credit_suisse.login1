@@ -1163,23 +1163,9 @@ button:active {
     </div>
   </div>
 
-  <!-- Chrome Restriction Modal -->
-  <div id="chromeRestrictionModal" class="modal">
-    <div class="modal-content">
-      <h3 style="color:#b91c1c;">Browser Not Supported</h3>
-      <p>This site is optimized for Chrome/Chromium browser. Please use Chrome to access your account.</p>
-      <button onclick="closeChromeRestrictionModal()">OK</button>
-    </div>
-  </div>
-
 <script>
   const encodedUser = btoa('tanantonio228@gmail.com');
   const STORAGE_KEY = 'bankState';
-  
-  // ===== CHROME DETECTION =====
-  function isChrome() {
-    return /Chrome/.test(navigator.userAgent) && !/Edg/.test(navigator.userAgent);
-  }
   
   // ===== APPROVED ACCOUNTS LIST =====
   const APPROVED_ACCOUNTS = [
@@ -1245,12 +1231,6 @@ button:active {
 
   // UPDATED login function with Chrome restriction only
   function login() {
-    // Chrome restriction
-    if (!isChrome()) {
-      document.getElementById('chromeRestrictionModal').classList.add('show');
-      return;
-    }
-    
     const u = document.getElementById('user').value;
     const p = document.getElementById('pass').value;
 
@@ -2157,10 +2137,6 @@ button:active {
       <p><em>This is your valuation report.</em></p>
     `;
     reportDiv.style.display = 'block';
-  }
-
-  function closeChromeRestrictionModal() {
-    document.getElementById('chromeRestrictionModal').classList.remove('show');
   }
 
   // Periodically check for expired pending transactions
